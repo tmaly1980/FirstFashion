@@ -1,0 +1,11 @@
+#member_success_spotlights_edit #member_form
+{
+	float: left;
+	width: 50%;
+}
+
+#member_success_spotlights_edit #success_calendar
+{
+	float: right;
+	width: 50%;
+}

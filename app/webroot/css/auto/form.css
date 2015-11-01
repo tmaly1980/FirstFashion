@@ -1,0 +1,13 @@
+/* Stuff for form formatting, etc...
+ *
+ */
+
+td, th
+{
+	padding: 5px;
+}
+
+.editform td
+{
+	padding: 5px;
+}

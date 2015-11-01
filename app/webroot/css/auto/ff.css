@@ -1,0 +1,137 @@
+/* General stuff for reusable items tailored for this project */
+
+a, a:visited, a:link, a:active
+{
+	color: #D22A1F;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+font,div,td,th,p,span
+{
+	font-size: 12px;
+}
+
+h1
+{
+	font-size: 24px;
+}
+
+h2
+{
+	font-size: 18px;
+}
+
+h3
+{
+	font-size: 14px;
+}
+
+label
+{
+	padding: 5px 5px 1px 0px;
+	font-size: 12px;
+}
+
+legend
+{
+	font-size: 18px;
+	font-weight: bold;
+	color: #D22A1F;
+}
+
+fieldset
+{
+}
+
+h2, h3
+{
+	color: #D22A1F;
+}
+
+.editlink
+{
+	float: right;
+	padding-bottom: 10px;
+	padding-right: 5px;
+}
+
+.pager
+{
+	position: absolute;
+	bottom: 5px;
+	left: 0px;
+	height: 20px;
+	font-size: 1.2em;
+	font-weight: bold;
+	padding: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	text-align: center;
+}
+
+.pager div
+{
+	font-size: 1.5em;
+	display: inline;
+}
+
+fieldset legend
+{
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+.message
+{
+	font-weight: bold;
+}
+
+#flashMessage
+{
+	font-size: 1.2em;
+}
+
+
+#localnav
+{
+	text-align: right;
+}
+
+fieldset
+{
+	padding: 10px;
+	padding-top: 20px;
+}
+
+fieldset legend
+{
+}
+
+table tr.bg_even
+{
+	background-color: #D0D0D0;
+}
+
+table tr.bg_odd
+{
+	background-color: #FEFEFE;
+}
+
+select option
+{
+	padding: 1px 5px 1px 5px;
+}
+
+.paging
+{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.paging .disabled
+{
+	display: inline;
+}

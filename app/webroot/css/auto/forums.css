@@ -1,0 +1,21 @@
+.forums_index_page #content_row
+{
+	padding: 0px;
+	margin: 0px;
+}
+
+.forums_index_page #content
+{
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#forum_iframe
+{
+	width: 90%;
+	height: 400px;
+	overflow: visible;
+	border: 0px;
+	padding: 0px;
+}

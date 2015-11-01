@@ -1,0 +1,86 @@
+#messages_list
+{
+	margin: 10px;
+	width: 100%;
+	border: solid black 1px;
+}
+
+#member_messages_list .folderlinks
+{
+	text-align: right;
+}
+
+#member_messages_list .folderlinks a
+{
+	font-size: 14px;
+	font-weight: bold;
+}
+
+#messages_list .altrow
+{
+	background-color: #EEE;
+}
+
+#messages_list .message_checkbox
+{
+	width: 50px;
+}
+
+#messages_list .sender
+{
+	width: 150px;
+}
+
+#messages_list .subject
+{
+}
+
+#messages_list .sent_time
+{
+	width: 100px;
+}
+
+#messages_list .unread
+{
+	font-weight: bold;
+	font-size: 1.1em;
+}
+
+#member_messages_view .replylink
+{
+	float: left;
+	margin-top: 10px;
+}
+
+#member_messages_view .replylink a
+{
+	font-size: 1.2em;
+}
+
+
+#member_messages_view .inboxlink
+{
+	float: right;
+	margin-top: 10px;
+	font-size: 1.2em;
+}
+
+#member_messages_view .inboxlink a
+{
+	font-size: 1.2em;
+}
+
+#member_messages_send
+{
+}
+
+#member_messages_send #MemberMessageSubject
+{
+	width: 445px;
+}
+
+#member_messages_send #message_content
+{
+	width: 450px;
+	height: 175px;
+}

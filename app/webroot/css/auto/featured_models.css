@@ -1,0 +1,67 @@
+/*
+ * IDENTICAL TO FRIENDS LIST, THANKFULLY!
+ * 
+ * */
+#featured_models
+{
+	background: url("/images/design/friends_orig.gif") no-repeat;
+	float: right;
+	position: relative;
+	width: 219px;
+	height: 450px;
+}
+
+#featured_models h2
+{
+	text-align: center;
+	margin: 0px;
+	padding-top: 15px;
+	padding-bottom: 25px;
+}
+
+#featured_models_content
+{
+	margin: 0px;
+	margin-top: 10px;
+	padding-bottom: 10px;
+}
+
+#featured_models_content .user
+{
+	padding-left: 10px;
+	padding-right: 5px;
+	/*padding-bottom: 25px;*/
+	padding-top: 10px;
+}
+
+#featured_models_content .user img
+{
+}
+
+#featured_models_content .user .photo
+{
+	float: left;
+	padding-right: 5px;
+	clear: both;
+	width: 85px;
+	padding-bottom: 10px;
+}
+
+#featured_models .user .name
+{
+	margin: 0px;
+	padding-top: 15px;
+}
+
+#featured_models .user .info
+{
+	margin: 0px;
+	margin-top: 1px;
+}
+
+#featured_models .user .link
+{
+	margin-top: 5px;
+	text-align: right;
+}
+

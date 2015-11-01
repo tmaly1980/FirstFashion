@@ -1,0 +1,43 @@
+<div class="member_album">
+<? 
+if ($firstfashion->isOwnProfile()) { # Own, add edit link. 
+	echo "<div class='editlink'> <a href='/member_photos/editlist'>Edit Photos</a> </div>";
+}
+
+$base_path = WWW_ROOT;
+$error_path = "/images/members/default/small/error.jpg";
+foreach ($member['MemberPhoto'] as $member_photo)
+{
+	$thumb_path = "/images/members/$member_id/small/";
+	$large_path = "/images/members/$member_id/large/";
+
+	$photo_id = $member_photo["photo_id"];
+	$ext = $member_photo["ext"];
+	if (!$ext) { $ext = 'jpg'; }
+	$photo_path = "$photo_id.$ext";
+	$photo_title = $member_photo["title"];
+
+	$large_image = "$large_path/$photo_id.$ext";
+	$disabled = false;
+
+	if (!is_dir("$base_path/$thumb_path")) { mkdir("$base_path/$thumb_path", 0755, true); }
+
+	echo "<a class='member_album_photo lightwindow' href='$large_image' title='$photo_title'>" .
+		$html->image(
+			$thumb_path . # Needs to be STRING append, not comma separator!
+			$thumbnail->render($photo_path,
+				array(
+					'path'=>$large_path,
+					'cachepath'=>"$base_path/$thumb_path",
+					'errorfile'=>$error_path,
+					'width'=>85,
+					'height'=>85,
+					'quality'=>80
+				)
+			)
+		)
+		. "</a>";
+}
+
+?>
+</div>

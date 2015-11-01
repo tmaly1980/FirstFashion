@@ -1,0 +1,48 @@
+DROP TABLE IF EXISTS members;
+CREATE TABLE IF NOT EXISTS members
+(
+
+	member_id	INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+
+
+
+	email		VARCHAR(60) NOT NULL,
+	username	VARCHAR(32) NOT NULL,
+	password	VARCHAR(128), # Since md5/sha1 encrypted!
+
+	firstname	VARCHAR(32),
+	lastname	VARCHAR(32),
+	city		VARCHAR(32),
+	state		VARCHAR(2),
+
+	website		VARCHAR(64),
+	about_me	TEXT,
+	since_experience	DATE, # For calculating years experience...
+
+	registration_date	TIMESTAMP,
+	active		BOOL DEFAULT TRUE, # for whatever reason, disabled -- default until email link click....
+	
+	member_type	ENUM('model','stylist','photographer','agent'),
+
+	INDEX	(email),
+	INDEX	(username),
+	INDEX	(firstname, lastname)
+);
+
+DROP TABLE IF EXISTS member_model_profiles;
+CREATE TABLE IF NOT EXISTS member_model_profiles
+(
+	member_id	INTEGER UNSIGNED PRIMARY KEY,
+	gender		ENUM('Male','Female'),
+	birthdate	DATE, # For calculating age.
+	height		INTEGER(3), # Stored in inches, so can convert to cm.
+	weight		INTEGER(3), # lbs
+	eye_color	ENUM('Blue','Brown','Green','Grey','Hazel','Other'),
+	hair_color	ENUM('Black','Blonde','Dark Blonde','Light Brown','Brown','Dark Brown','Red','Grey/White','Other'),
+	measurements	VARCHAR(8), # BB-WW-HH (bust-waist-hips)
+	ethnicity	ENUM('African-American','Asian','Caucasian','Hispanic','Native American','Mixed','Other'),
+	skintone	ENUM('Fair','Pale','Bronze','Freckled'),
+
+	availability	VARCHAR(64)
+);
+

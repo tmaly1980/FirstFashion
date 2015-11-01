@@ -1,0 +1,39 @@
+.member_search_results
+{
+	width: 650px;
+}
+
+.member_search_results .header th
+{
+	border-bottom: solid black 1px;
+}
+
+.member_thumb
+{
+}
+
+.member_search_results .entry td
+{
+	padding-top: 10px;
+	vertical-align: top;
+}
+
+.member_search_results .altrow
+{
+	background-color: #EEE;
+}
+
+.member_search_results .member_thumb
+{
+	width: 85px;
+}
+
+.member_search_results .name_col
+{
+	width: 125px;
+}
+
+.memer_search_results .location_col
+{
+	width: 100px;
+}

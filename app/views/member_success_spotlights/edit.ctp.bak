@@ -1,0 +1,26 @@
+<div id="member_success_spotlights_edit">
+
+<h2>Manage Success Spotlight</h2>
+
+<div id="member_form">
+</div>
+<div id="spotlight_calendar">
+</div>
+
+	   <?
+	   echo $ajax->Javascript->event('window','load',
+	        $ajax->remoteFunction(
+	                array('url'=>"/member_success_spotlights/editform/$member_id", 'update'=>"member_form")
+	        )
+	   );
+
+	   # will be called within member_form, (ie if saved and reloaded)
+
+	   #echo $ajax->Javascript->event('window','load',
+	   #     $ajax->remoteFunction(
+	   #             array('url'=>"/member_success_spotlights/calendar", 'update'=>"spotlight_calendar")
+	   #     )
+	   #);
+	   ?>
+
+</div>

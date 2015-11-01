@@ -1,0 +1,3 @@
+it seems that redirect() is catching /firstfashion, when SHOULDNT....
+
+perhaps something put in Router?

@@ -1,0 +1,23 @@
+#member_overview
+{
+}
+
+#member_overview .member_type_overview
+{
+	padding: 5px;
+	background-color: #DEDEDE;
+	margin: 20px;
+	border: solid #CCC 1px;
+}
+
+
+#member_overview .member_type_overview p
+{
+	padding-left: 20px;
+}
+
+#member_overview .member_type_overview .learn_more
+{
+	display: block;
+	text-align: right;
+}

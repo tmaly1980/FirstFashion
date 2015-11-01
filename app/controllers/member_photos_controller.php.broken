@@ -1,0 +1,302 @@
+<?php
+class MemberPhotosController extends AppController {
+
+	var $name = 'MemberPhotos';
+	var $helpers = array('Html', 'Form','Thumbnail','Lightbox','Ajax');
+
+	function beforeFilter()
+	{
+		$this->Auth->allow();
+		parent::beforeFilter();
+	}
+
+	function editlist() {
+		$member_id = $this->Session->read("Auth.Member.member_id");
+		$this->MemberPhoto->recursive = 0;
+		$this->set("memberPhotos", $this->MemberPhoto->find('all',array('conditions'=>"MemberPhoto.member_id = '$member_id'")));
+		#$this->set('memberPhotos', $this->paginate('MemberPhoto',array('MemberPhoto.member_id'=>$member_id)));
+		$this->set("member_id", $member_id); # For top menu to appear.
+
+		# Show OWN photos ONLY....
+	}
+	function editlistorig() {
+		$member_id = $this->Session->read("Auth.Member.member_id");
+		$this->MemberPhoto->recursive = 0;
+		#$this->set("memberPhotos", $this->MemberPhoto->findAll("MemberPhoto.member_id = '$member_id'"));
+		$this->set('memberPhotos', $this->paginate('MemberPhoto',array('MemberPhoto.member_id'=>$member_id)));
+		$this->set("member_id", $member_id); # For top menu to appear.
+
+		# Show OWN photos ONLY....
+	}
+
+	function view($id = null) {
+		if (!$id) {
+			$this->Session->setFlash(__('Invalid MemberPhoto.', true));
+			$this->redirect(array('action'=>'editlist'));
+		}
+		$this->set('memberPhoto', $this->MemberPhoto->read(null, $id));
+	}
+
+	function add() {
+
+		$member_id = $this->Session->read("Auth.Member.member_id");
+		$this->_savePhoto();
+
+		$members = $this->MemberPhoto->Member->find('list');
+		$this->set(compact('members'));
+	}
+
+	function _savePhoto() # Includes adding/updating of meta information. PLUS uploads.
+	{
+		if (!empty($this->data))
+		{
+			$member_id = $this->Session->read("Auth.Member.member_id");
+			$album_id = $this->data["MemberPhoto"]["album_id"];
+			$this->data["MemberPhoto"]["member_id"] = $member_id;
+
+			$photo_id = "";
+
+			if (!isset($this->data["MemberPhoto"]["photo_id"])) # Adding...
+			{
+				$this->MemberPhoto->create();
+			} else {
+				$photo_id = isset($this->data["MemberPhoto"]["photo_id"]);
+			}
+
+			if (!$this->MemberPhoto->save($this->data))
+			{
+				$this->Session->setFlash(__('The photo could not be saved. Please, try again.', true));
+				return;
+			}
+			# Save meta even IF photo not uploaded.
+
+			$photo_id = $this->MemberPhoto->id; # In case adding...
+
+			$errors = $this->_saveUpload($photo_id);
+
+			if (is_array($errors)) 
+			{ 
+				$errors = implode("<br/> ", $errors); 
+				$this->Session->setFlash($errors);
+			} else {
+				$this->Session->setFlash(__('The Member Photo has been saved', true));
+				#$this->redirect(array('action'=>'editlist'));
+			}
+		}
+	}
+
+	function _saveUpload($photo_id)
+	{
+		if (($fileobj = $this->data["MemberPhoto"]["file"])) { # IF uploading too...
+		error_log("SAVING UPLOAD...=".print_r($fileobj,true));
+			#$fileobj = $this->data["MemberPhoto"]["file"];
+			$member_id = $this->Session->read("Auth.Member.member_id");
+
+			error_log("FILEOJ=".print_r($fileobj,true));
+
+
+			# Get extension from filename....
+			preg_match("/[.](\w+)$/", $fileobj["name"], $matcher);
+			$ext = $matcher[1];
+
+			if ($fileobj["size"] < 1024) # Probably invalid!
+			{
+				$this->Session->setFlash("Invalid image. File size too small.");
+				$this->render();
+			}
+
+			# Now save file to disk...
+			#$dest_path = sprintf(APP . "/webroot/images/members/%d/%d/large/%d.%s",
+			$dest_path = sprintf(APP . "/webroot/images/members/%d/large/%d.%s",
+				$member_id,
+				$photo_id,
+				$ext
+			);
+
+			$dest_dir = dirname($dest_path);
+			$dest_file = basename($dest_path);
+
+			error_log("DEST_DIR=$dest_dir, DEST_FILE=$dest_file");
+
+			if (!is_dir($dest_dir))
+			{
+				if (!mkdir($dest_dir, 0755, true))
+				{
+					$this->Session->setFlash("Unable to create folder $dest_dir");
+					$this->render();
+				} else {
+					error_log("CREATED $dest_dir");
+				}
+			}
+
+			error_log("SAVING AS $dest_path");
+
+			$this->Upload->upload($fileobj, "$dest_dir/", $dest_file);
+			$errors = $this->Upload->errors;
+
+			return $errors;
+		}
+	}
+
+	function updatePhoto() # ADD _AND_ EDIT _AND_ REMOVE (if remove button pressed)
+	{
+		$member_id = $this->Session->read("Auth.Member.member_id");
+		$photo_id = $this->data["MemberPhoto"]["photo_id"];
+		$submit = $this->data["MemberPhoto"]["submit"];
+		$remove = $this->data["MemberPhoto"]["remove"];
+
+		error_log("DATA=".print_r($this->data,true));
+
+		# ALWAYS SAVE AS SELF!
+		$this->data["MemberPhoto"]["member_id"] = $member_id;
+
+		if ($photo_id == '') # Adding.
+		{
+			$this->MemberPhoto->create();
+		}
+
+		error_log("SUBMIT=$submit, PHOTO_ID=$photo_id");
+
+		if (($submit == 'Remove' || $remove) && $photo_id != '')
+		{
+			$this->MemberPhoto->remove($photo_id); # REMOVE!
+		} else {
+			$this->MemberPhoto->save($this->data); # Otherwise save...
+			$photo_id = $this->MemberPhoto->id;
+			$this->_saveUpload($photo_id);
+		}
+
+
+	}
+
+	function getPhotoList($mode = 'view', $id = null) # For updating list when changes made (could be photo changing, adding, etc)
+	{
+		# Can also be used in getPhotoList/ID syntax for getting others' photos.
+		$member_id = $this->Session->read("Auth.Member.member_id");
+		if (!$id && $member_id) { $id = $member_id; }
+		if (!$id) { error_log("No member specified and not logged in!"); }
+
+		$memberPhotos = array();
+		if ($id)
+		{
+			error_log("ID=$id");
+			$memberPhotos = $this->MemberPhoto->find('all',array('conditions'=>"MemberPhoto.member_id = '$id'"));
+			#error_log("MP=".print_r($memberPhotos,true));
+		}
+		$this->set("mode", $mode);
+		$this->set("memberPhotos", $memberPhotos);
+		$this->layout = 'ajax';
+	}
+
+	function sortPhoto() # For rearranging.
+	{
+	}
+
+	function removePhoto() 
+	{
+	}
+
+	function setPrimaryPhoto() 
+	{
+	}
+
+	function edit($id = null) {
+		$member_id = $this->Session->read("Auth.Member.member_id");
+		if (!$id && empty($this->data)) {
+			$this->Session->setFlash(__('Invalid MemberPhoto', true));
+			$this->redirect(array('action'=>'editlist'));
+		}
+		if (!empty($this->data)) {
+			if ($this->data["MemberPhoto"]['member_id'] != $member_id)
+			{
+				$this->Session->setFlash(__('Unauthorized to change others photos', true));
+				$this->redirect(array('action'=>'editlist'));
+			}
+
+			if ($this->MemberPhoto->save($this->data)) {
+				$this->Session->setFlash(__('The Photo has been saved', true));
+				$this->redirect(array('action'=>'editlist'));
+			} else {
+				$this->setError("The Photo could not be saved. Please, try again.", $this->MemberPhoto);
+				#$this->Session->setFlash(__('The Photo could not be saved. Please, try again.', true));
+			}
+		}
+		if (empty($this->data)) {
+			$this->data = $this->MemberPhoto->read(null, $id);
+		}
+		$members = $this->MemberPhoto->Member->find('list');
+		$this->set(compact('members'));
+	}
+
+	function delete($id = null) {
+		if (!$id) {
+			$this->Session->setFlash(__('Invalid id for MemberPhoto', true));
+			$this->redirect(array('action'=>'editlist'));
+		}
+		if ($this->MemberPhoto->del($id)) {
+			$this->Session->setFlash(__('MemberPhoto deleted', true));
+			$this->redirect(array('action'=>'editlist'));
+		}
+	}
+
+
+	function admin_index() {
+		$this->MemberPhoto->recursive = 0;
+		$this->set('memberPhotos', $this->paginate());
+	}
+
+	function admin_view($id = null) {
+		if (!$id) {
+			$this->Session->setFlash(__('Invalid MemberPhoto.', true));
+			$this->redirect(array('action'=>'index'));
+		}
+		$this->set('memberPhoto', $this->MemberPhoto->read(null, $id));
+	}
+
+	function admin_add() {
+		if (!empty($this->data)) {
+			$this->MemberPhoto->create();
+			if ($this->MemberPhoto->save($this->data)) {
+				$this->Session->setFlash(__('The MemberPhoto has been saved', true));
+				$this->redirect(array('action'=>'index'));
+			} else {
+				$this->Session->setFlash(__('The MemberPhoto could not be saved. Please, try again.', true));
+			}
+		}
+		$members = $this->MemberPhoto->Member->find('list');
+		$this->set(compact('members'));
+	}
+
+	function admin_edit($id = null) {
+		if (!$id && empty($this->data)) {
+			$this->Session->setFlash(__('Invalid MemberPhoto', true));
+			$this->redirect(array('action'=>'index'));
+		}
+		if (!empty($this->data)) {
+			if ($this->MemberPhoto->save($this->data)) {
+				$this->Session->setFlash(__('The MemberPhoto has been saved', true));
+				$this->redirect(array('action'=>'index'));
+			} else {
+				$this->Session->setFlash(__('The MemberPhoto could not be saved. Please, try again.', true));
+			}
+		}
+		if (empty($this->data)) {
+			$this->data = $this->MemberPhoto->read(null, $id);
+		}
+		$members = $this->MemberPhoto->Member->find('list');
+		$this->set(compact('members'));
+	}
+
+	function admin_delete($id = null) {
+		if (!$id) {
+			$this->Session->setFlash(__('Invalid id for MemberPhoto', true));
+			$this->redirect(array('action'=>'index'));
+		}
+		if ($this->MemberPhoto->del($id)) {
+			$this->Session->setFlash(__('MemberPhoto deleted', true));
+			$this->redirect(array('action'=>'index'));
+		}
+	}
+
+}
+?>

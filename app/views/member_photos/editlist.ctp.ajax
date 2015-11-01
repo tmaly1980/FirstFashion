@@ -1,0 +1,71 @@
+<?php echo $this->element("member_edit_menu"); ?>
+<div class="memberPhotos index">
+<h2><?php __('Photo Album');?></h2>
+
+<br/>
+<table class="photo_album_editor">
+	<tr>
+		<td class="primary_image">
+			<img src="/images/members/default/large/default.jpg">
+			<br/>
+Drag your desired primary photo from below on top of here to change.
+		</td>
+		<td class="edit_form">
+			<?php
+				#echo $form->create("MemberPhoto",array('type'=>'file','name'=>'photoEditForm','id'=>'photoEditForm'));
+				echo $ajax->form("updatePhoto",'post', array('model'=>'MemberPhoto','enctype'=>'multipart/form-data','name'=>'photoEditForm','class'=>'hide','id'=>'photoEditForm','loaded'=>"completePhotoEditFormAction('$member_id');"));
+
+
+				#echo $form->hidden('member_id',array('value'=>$session->read("Auth.Member.member_id")));
+				# This wont work keeping member_id above, since will get reset
+				# (just have backend assume member_id!)
+				#
+				#
+				echo $form->hidden('album_id',array('value'=>0));
+
+				echo $form->hidden('remove');
+
+				echo $form->hidden('photo_id'); # If absent, will add instead of modify existing.
+				echo $form->input('title');
+
+				echo $form->input('file',array('type'=>'file','label'=>'Upload/Replace File'));
+
+				echo $form->input('comment',array('rows'=>'3','cols'=>'50'));
+
+				?>
+					<div style="float: left; width: 100px;">
+						<input type=submit name="submit" value="Update">
+					</div>
+					<div style="float: right; width: 100px;">
+						
+						<input type=submit name="submit" value="Remove" onClick="$('MemberPhotoRemove').value = '1';">
+					</div>
+
+				<?
+
+				echo $form->end();
+			?>
+		</td>
+	</tr>
+	<tr>
+		<td colspan=2 class="member_album">
+		To re-organize your photos, simply drag them to where you want them to go.<br/>
+		<div class="clear editlink">
+			[<a href="Javascript:void(0);" onClick="loadPhotoEditForm();">Add Photo</a>]
+		</div>
+		<?php
+		echo $ajax->Javascript->event('window','load',
+			$ajax->remoteFunction(
+				array('url'=>"/memberPhotos/getPhotoList/edit/$member_id", 'update'=>"member_album")
+			)
+		);
+		?>
+		<div id="member_album">
+		</div>
+			<br/>
+			SORT DRAG TODO...
+		</td>
+	</tr>
+</table>
+
+</div>

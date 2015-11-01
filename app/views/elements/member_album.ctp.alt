@@ -1,0 +1,91 @@
+<table class="member_album" cellpadding="0" cellspacing="0">
+<?php
+	$images_per_row = 5;
+	$max_rows_per_page = 2;
+
+	$sess_member_id = $session->read("Auth.Member.member_id");
+	$current_member_id = $member["Member"]["member_id"];
+
+	$isOwnProfile = ($sess_member_id == $current_member_id);
+	
+	$images_table = array();
+	if ($sess_member_id == $current_member_id) # Own, add edit link.
+	{
+		$images_table[] = array(array("&nbsp;", array('colspan'=>4)), $html->link("Edit Photos","/member_photos/editlist"));
+	} else {
+		$images_table[] = array(array("&nbsp;", array('colspan'=>5)));
+	}
+
+	# XXX TODO if no images, place blank photos in place....
+
+	# Load from database.
+	$row = count($images_table);
+	$col = 1; 
+	$photocount = count($member['MemberPhoto']);
+	error_log("PHOTO COUNT=$photocount");
+
+	#foreach ($member['MemberPhoto'] as $member_photo)
+	for ($i = 0; $i < $max_rows_per_page * $images_per_row; $i++)
+	{
+
+		if ($col++ > $images_per_row) { $row++; $col = 1; }
+
+		$base_path = WWW_ROOT;
+		if ($i < $photocount) # Still have one available.
+		{
+			$member_photo = $member['MemberPhoto'][$i];
+			error_log("MEMBERPHOTO=".print_r($member_photo,true));
+
+			$thumb_path = "/images/members/$current_member_id/small/";
+			$large_path = "/images/members/$current_member_id/large/";
+
+			$photo_id = $member_photo["photo_id"];
+			$ext = $member_photo["ext"];
+			if (!$ext) { $ext = 'jpg'; }
+			$photo_path = "$photo_id.$ext";
+
+			$large_image = "$large_path/$photo_id.$ext";
+			$img_title = $member_photo["title"];
+
+		} else { # Else need to put in dummy image.
+			# We can't have a photo album that is collapsed and looks ugly!
+
+			$large_image = "Javascript:void(0)"; # Don't go anywhere!
+
+			$large_path = "/images/members/default/large/";
+
+			$thumb_path = "/images/members/default/small/";
+			$photo_path = "default.jpg";
+			$img_title = "No image available";
+		}
+
+		if (!is_dir("$base_path/$thumb_path")) { mkdir("$base_path/$thumb_path", 0755, true); }
+
+		$images_table[$row][] = 
+			$lightbox->img(
+					$thumb_path . # Needs to be STRING append, not comma separator!
+					$thumbnail->render($photo_path,
+						array(
+							'path'=>$large_path,
+							'cachepath'=>"$base_path/$thumb_path",
+							'width'=>85,
+							'height'=>85,
+							'quality'=>80
+						)
+					),
+					$large_image,
+					$img_title
+				);
+	}
+
+	$images_table[] = 
+		array(
+			$html->link("<< ", "TODO"),
+			array("&nbsp;", array('colspan'=>3)),
+			$html->link(">> ", "TODO"),
+		);
+		
+	echo $html->tableCells($images_table);
+
+?>
+</table>

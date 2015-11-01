@@ -1,0 +1,10 @@
+.members_login_page #content, .members_login_form_page #content
+{
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+}
+
+#content
+{
+}

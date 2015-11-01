@@ -1,0 +1,12 @@
+#sidebar_adbanner
+{
+	margin: 0px;
+	padding; 0px;
+	padding-top: 5px;
+}
+
+#sidebar_adbanner .adbanner_item, #adbanner_editlist .adbanner_item
+{
+	padding-top: 25px;
+}
+

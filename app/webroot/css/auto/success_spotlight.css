@@ -1,0 +1,83 @@
+/*
+ * IDENTICAL TO FRIENDS LIST, THANKFULLY!
+ * 
+ * */
+#success_spotlight
+{
+	background: url("/images/design/friends_orig.gif") no-repeat;
+	float: right;
+	position: relative;
+	width: 219px;
+	height: 450px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#success_spotlight #spotlight_admin_link
+{
+	padding: 0px 2px 2px 2px;
+	text-align: right;
+}
+
+#success_spotlight h2
+{
+	text-align: center;
+	margin: 0px;
+	padding-top: 5px;
+	padding-bottom: 0px;
+}
+
+#success_spotlight_content
+{
+	margin: 0px;
+	margin-top: 10px;
+	padding-bottom: 10px;
+}
+
+#success_spotlight_content .user
+{
+	padding-left: 10px;
+	padding-right: 5px;
+	padding-bottom: 25px;
+	padding-top: 10px;
+}
+
+#success_spotlight_content .user img
+{
+}
+
+#success_spotlight_content .user .photo
+{
+	display: block;
+	text-align: center;
+	padding: 10px;
+}
+
+#success_spotlight_content .name
+{
+	text-align: center;
+}
+
+#success_spotlight_content .user h3
+{
+	margin: 0px;
+	font-size: 16px !important;
+}
+
+#success_spotlight_content .user .spotlight_content 
+{
+	margin-top: 5px;
+	text-align: left;
+	overflow: auto;
+	height: 175px;
+}
+
+#success_spotlight_content .spotlight_link
+{
+	text-align: right;
+}
+
+#success_spotlight_list
+{
+	padding-top: 20px;
+}

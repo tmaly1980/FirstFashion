@@ -1,0 +1,125 @@
+<?php
+class MemberSuccessSpotlightsController extends AppController {
+
+	var $name = 'MemberSuccessSpotlights';
+	var $helpers = array('Html', 'Form');
+	var $uses = array('MemberSuccessSpotlight','Member');
+
+	var $paginate = array(
+		'limit'=>3, # Since all there's room for...
+		# !!! make sure only let 9 sign up at a time!
+		'order'=>array('end_date' => 'ASC','start_date'=>'ASC'),
+		# Show those who are expiring soon, and who have longer timeframes if ending on same day....
+
+		# ONLY SHOW THOSE WITH ACTIVE DATE RANGES!!!
+		'conditions'=>"start_date <= now() AND now() <= end_date",
+	);
+
+	function beforeFilter()
+	{
+		$this->Auth->allow('view'); # Others, ie 'add' restricted.
+		parent::beforeFilter();
+	}
+
+	function view()
+	{
+		# Show only one, but pick RANDOM one....
+		# pick random one? if so, how sort on admin side?
+		# maybe have large popup with member info and form on left, LARGE calendar on right,
+		# with calendar showing names for each day, and buttons on left (date form) saying 'choose by day' to 
+		# click on calendar's day number to fill in form, then ajax update 'save' button... 
+
+		# TO MANAGE, ADMIN JUST NEEDS TO LOG IN, GO TO HOME PAGE, CLICK ON MEMBER MENTIONED IN SPOTLIGHT AND THEN
+		# click on 'manage spotlight' button...
+
+
+		# WAIT!!!! WHAT IF THIS ISNT WHATS WANTED? I HAVE TO READ THOSE EMAILS!!!!!
+
+		# *** JUST GET FRONTEND TO EVERYTHING DONE, THEN PAYPAL AND ACLS DONE, THEN CHECK EMAILS ABOUT BACKEND, etc..
+
+		$this->layout = 'xml';
+
+		# SOMEDAY IMPLEMENT RANDOM PICKING OF LIST... 'order by rand()' ...
+		$this->MemberSuccessSpotlight->recursive = 0;
+		$spotlight = $this->MemberSuccessSpotlight->find("start_date <= now() AND now() <= end_date AND Member.active = 1", null, "end_date ASC, start_date ASC");
+
+		$registration_date = $spotlight['Member']['registration_date'];
+		if (!$registration_date) { $registration_date = date('Y-m-d'); }
+		$reg_parts = split("-", $registration_date);
+		$member_since = $reg_parts[0];
+		if (!$member_since) { $member_since = date('Y'); }
+		
+		$this->set('member_since', $member_since);
+		$this->set('success_spotlight', $spotlight);
+	}
+
+	function edit($id = '')
+	{
+	}
+
+	function editform($id = '')
+	{
+		if ($id != '')
+		{
+			$this->set("member", $this->Member->read(null, $id));
+			$this->set("member_id", $id);
+		}
+
+		if ($this->data)
+		{
+			# Process changes.
+
+			# Will need to somehow refresh calendar.
+			# maybe the editform refreshing can call code to update the calendar?
+		}
+	}
+
+	function add($friend_id = '')
+	{
+		# XXX TODO....
+		# may make best sense to just have 'edit' only....
+
+		if (!$friend_id) {
+			$this->Session->setFlash(__('Invalid Member ID.', true));
+			$this->redirect($_SERVER['HTTP_REFERER']); # Go back.
+		}
+
+		# Ensure logged in!
+
+		$owner_id = $this->Session->read("Auth.Member.member_id");
+		$this->data["MemberSuccessSpotlight"] = array(
+			"friend_member_id" => $friend_id,
+			"owner_member_id" => $owner_id,
+		);
+
+		if (!empty($this->data)) {
+			$this->MemberSuccessSpotlight->create();
+			if ($this->MemberSuccessSpotlight->save($this->data)) {
+				$this->Session->setFlash(__('The member has been added to your SuccessSpotlights list', true));
+			} else {
+				$this->Session->setFlash(__('The member could not be added to your SuccessSpotlights list. Please, try again.', true));
+			}
+		}
+		#$owners = $this->MemberSuccessSpotlight->Owner->find('list');
+		#$friends = $this->MemberSuccessSpotlight->FeaturedModel->find('list');
+		#$this->set(compact('owners', 'friends'));
+
+		$this->redirect(array('controller'=>'members','action'=>'view', $friend_id));
+		# DEFAULT...
+	}
+
+	function delete($friend_member_id = null) {
+		if (!$friend_member_id) {
+			$this->Session->setFlash(__('Invalid ID for FeaturedModel', true));
+			$this->redirect($_SERVER['HTTP_REFERER']);
+			#array('action'=>'index'));
+		}
+		$owner_id = $this->Session->read("Auth.Member.member_id");
+		if ($this->MemberSuccessSpotlight->deleteAll(array("owner_member_id"=>$owner_id, "friend_member_id"=>$friend_member_id))) {
+			$this->Session->setFlash(__('Member has been removed from SuccessSpotlights list', true));
+		}
+		$this->redirect(array('controller'=>'members','action'=>'view', $friend_member_id));
+	}
+
+}
+?>

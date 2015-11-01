@@ -1,0 +1,64 @@
+#friends
+{
+	background: url("/images/design/friends_orig.gif") no-repeat;
+	float: right;
+	position: relative;
+	width: 219px;
+	height: 450px;
+}
+
+#friends h2
+{
+	text-align: center;
+	margin: 0px;
+	padding-top: 15px;
+	padding-bottom: 25px;
+}
+
+#friends_content
+{
+	margin: 0px;
+	margin-top: 10px;
+	padding-bottom: 10px;
+}
+
+#friends_content .user
+{
+	padding-left: 10px;
+	padding-right: 5px;
+	padding-bottom: 25px;
+	padding-top: 10px;
+}
+
+#friends_content .user img
+{
+}
+
+#friends_content .user .photo
+{
+	float: left;
+	padding-right: 5px;
+	clear: both;
+	width: 85px;
+	padding-bottom: 10px;
+	overflow: hidden;
+}
+
+#friends_content .user .name
+{
+	margin: 0px;
+	padding-top: 15px;
+}
+
+#friends_content .user .info
+{
+	margin: 0px;
+	margin-top: 1px;
+}
+
+#friends_content .user .link
+{
+	margin-top: 5px;
+	text-align: right;
+}
+

@@ -1,0 +1,98 @@
+/*
+ * IDENTICAL TO FRIENDS LIST, THANKFULLY!
+ * 
+ * */
+#latest_talk
+{
+	/* background: url("/images/design/friends_orig.gif") no-repeat; */
+	float: left;
+	position: relative;
+	width: 400px;
+	height: 445px;
+	margin-top: 10px;
+}
+
+#latest_talk h2
+{
+	text-align: left;
+	margin: 0px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+	border-bottom: solid #CCC 1px;
+}
+
+#latest_talk_content
+{
+	margin: 0px;
+	margin-top: 10px;
+	padding-bottom: 10px;
+}
+
+#latest_talk_content .user
+{
+	background-color: #EDEDED;
+	padding: 0px;
+	margin: 0px;
+	margin-bottom: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+
+	height: 105px;
+}
+
+#latest_talk_content .user img
+{
+}
+
+#latest_talk_content .user .photo
+{
+	float: left;
+	padding-right: 5px;
+	width: 85px;
+	height: 90px;
+}
+
+#latest_talk_content .user .member_type
+{
+	float: right;
+	margin: 0px;
+	width: 80px;
+	height: 90px;
+	padding: 0px;
+	text-align: center;
+}
+
+#latest_talk_content .user .member_type h3
+{
+	margin: 0px;
+	padding: 0px;
+}
+
+.user .member_info
+{
+	padding: 5px;
+	width: 215px;
+	/*margin-left: 90px;*/ /* Not needed when overflow hidden, since wont overflow below image... */
+	height: 90px;
+	overflow: hidden;
+}
+
+.user .member_info h3
+{
+	padding: 0px;
+	margin: 0px;
+}
+
+.user .member_info h4
+{
+	margin: 0px;
+	margin-top: 1px;
+}
+
+.user .member_info p
+{
+	margin-top: 5px;
+	text-align: left;
+}
+

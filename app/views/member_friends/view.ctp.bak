@@ -1,0 +1,35 @@
+<div class="memberFriends view">
+<h2><?php  __('MemberFriend');?></h2>
+	<dl><?php $i = 0; $class = ' class="altrow"';?>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Friend Id'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<?php echo $memberFriend['MemberFriend']['friend_id']; ?>
+			&nbsp;
+		</dd>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Owner'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<?php echo $html->link($memberFriend['Owner']['member_id'], array('controller'=> 'members', 'action'=>'view', $memberFriend['Owner']['member_id'])); ?>
+			&nbsp;
+		</dd>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Friend'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<?php echo $html->link($memberFriend['Friend']['member_id'], array('controller'=> 'members', 'action'=>'view', $memberFriend['Friend']['member_id'])); ?>
+			&nbsp;
+		</dd>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Authorized'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<?php echo $memberFriend['MemberFriend']['authorized']; ?>
+			&nbsp;
+		</dd>
+	</dl>
+</div>
+<div class="actions">
+	<ul>
+		<li><?php echo $html->link(__('Edit MemberFriend', true), array('action'=>'edit', $memberFriend['MemberFriend']['friend_id'])); ?> </li>
+		<li><?php echo $html->link(__('Delete MemberFriend', true), array('action'=>'delete', $memberFriend['MemberFriend']['friend_id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $memberFriend['MemberFriend']['friend_id'])); ?> </li>
+		<li><?php echo $html->link(__('List MemberFriends', true), array('action'=>'index')); ?> </li>
+		<li><?php echo $html->link(__('New MemberFriend', true), array('action'=>'add')); ?> </li>
+		<li><?php echo $html->link(__('List Members', true), array('controller'=> 'members', 'action'=>'index')); ?> </li>
+		<li><?php echo $html->link(__('New Owner', true), array('controller'=> 'members', 'action'=>'add')); ?> </li>
+	</ul>
+</div>

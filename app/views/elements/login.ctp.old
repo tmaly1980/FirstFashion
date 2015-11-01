@@ -1,0 +1,8 @@
+<h2>Login:</h2>
+<?php 
+echo $form->create('Member', array('type'=>'post','action'=>'login')); 
+echo $form->input('email', array('value'=>''));
+echo $form->input('password', array('value'=>''));
+echo $form->end('Login');
+echo $html->link("Signup", "/members/signup");
+?>

@@ -1,0 +1,155 @@
+#member_album
+{
+	position: relative;
+	float: left;
+	width: 400px;
+	margin-left: 10px;
+	margin-right: 10px;
+
+	height: 300px;
+}
+
+#member_album_top_left
+{
+	background: url("/images/design/gallery_top_left.gif") no-repeat;
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+#member_album_top
+{
+	border-top: solid 1px #CCC;
+	background: #CC0000;
+	height: 9px;
+	overflow: hidden;
+	width: 380px;
+	margin-left: 10px;
+}
+
+#member_album_top_right
+{
+	background: url("/images/design/gallery_top_right.gif") no-repeat;
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+
+#member_album_bottom_left
+{
+	background: url("/images/design/gallery_bottom_left.gif") no-repeat;
+	margin: 0px;
+	overflow: hidden; /* so IE doesnt force height of text */
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+}
+
+#member_album_bottom
+{
+	border-bottom: solid 1px #CCC;
+	background: #CC0000;
+	height: 9px;
+	overflow: hidden;
+	width: 380px;
+position: absolute;
+bottom: 0px;
+left: 10px;
+margin: 0px;
+}
+
+#member_album_bottom_right
+{
+	/* seemsl ike there's damned margin, etc... */
+	background: url("/images/design/gallery_bottom_right.gif") no-repeat;
+	width: 10px;
+	margin: 0px;
+	height: 10px;
+	overflow: hidden; /* so IE doesnt force height of text */
+/* tho absolute positioning still relative to assumed line height....
+ * HOW can we force height to be taken ltierally, and not imply line height ? */
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+}
+
+#member_album_top_row
+{
+	position: relative;
+	width: 400px;
+	height: 10px;
+}
+
+#member_album_bottom_row
+{
+	position: relative;
+	width: 400px;
+	height: 10px;
+	overflow: hidden; /* so IE doesnt force height of text */
+}
+
+#member_album_content
+{
+	border-left: solid 1px #CCC;
+	border-right: solid 1px #CCC;
+	width: 388px;
+	height: 275px;
+	background-color: #CC0000; 
+	padding: 5px;
+}
+
+.member_album_viewer .editlink a,
+#member_album_item_list a,
+#member_album .pager a
+{
+	color: white;
+}
+
+#member_album_item_list a.flaglink
+{
+	display: block;
+	float: right;
+}
+
+#member_album h2
+{
+	color: white;
+	margin: 0px;
+	padding: 0px;
+}
+
+#member_album_item_list
+{
+	/*width: 100%; */ /* So dont get odd center aligns and links so far away...
+	height: 215px;
+}
+
+#member_album_item_list td
+{
+	padding: 5px;
+	text-align: center;
+}
+
+#member_album .member_album_photo
+{
+	/*width: 100px;*/
+
+	float: left;
+	padding: 0px;
+
+	/*
+
+	margin-left: auto;
+	margin-right: auto;
+	*/
+}
+.member_album_photo .photocell
+{
+	padding-bottom: 5px;
+}

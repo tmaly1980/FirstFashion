@@ -1,0 +1,91 @@
+function switchPane(parentid, paneid)
+{
+	var parentobj = document.getElementById(parentid);
+	//alert("PO="+parentobj);
+	if (!parentobj) { return; }
+	for (var i = 0; i < parentobj.childNodes.length; i++)
+	{
+		var obj = parentobj.childNodes.item(i);
+		//alert("OBJ="+obj.nodeName);
+		if (obj.nodeName == 'DIV' || obj.nodeName == 'div')
+		{
+			if(obj.id == paneid)
+			{
+				//alert("FOUND");
+				obj.style.display = 'block';
+			} else {
+				//alert("BAD");
+				obj.style.display = 'none';
+			}
+		}
+	}
+}
+
+function showPhotoEditForm()
+{
+	var form = $('photoEditForm');
+	if (!form) { return; }
+	form.style.display = "block";
+}
+
+function hidePhotoEditForm()
+{
+	var form = $('photoEditForm');
+	if (!form) { return; }
+	form.style.display = "none";
+}
+
+function completePhotoEditFormAction(member_id)
+{
+	clearPhotoEditForm();
+	hidePhotoEditForm();
+	reloadPhotoList(member_id);
+}
+
+function reloadPhotoList(member_id)
+{
+	new Ajax.Updater('member_album','/memberPhotos/getPhotoList/edit/'+member_id, {asynchronous:true, evalScripts:true, requestHeaders:['X-Update', 'member_album']});
+}
+
+function loadPhotoEditForm()
+{
+	var id = arguments[0];
+	var form = $('photoEditForm');
+	if (!form) { return; }
+	clearPhotoEditForm();
+	if (!id) { return; } // May want to ADD items....
+	var img = $(id);
+	var photo_id = img.getAttribute("photo_id");
+	var title = img.getAttribute("title");
+	var comment = img.getAttribute("comment");
+	var album_id = img.getAttribute("album_id");
+
+	if (!photo_id) { return; } //don't work with broken items...
+
+	if (title) { form["data[MemberPhoto][title]"].value = title; }
+	if (comment) { form["data[MemberPhoto][comment]"].value = comment; }
+	if (photo_id) { form["data[MemberPhoto][photo_id]"].value = photo_id; }
+	if (album_id) { form["data[MemberPhoto][album_id]"].value = album_id; }
+}
+
+function clearPhotoEditForm()
+{
+	showPhotoEditForm();
+	var form = $('photoEditForm');
+	if (!form) { return; }
+	form.reset();
+	// Also reset custom 'hidden' (internal) fields....
+	// Since form.reset() wont touch hidden's (in Firefox)
+	if (album_id = form["data[MemberPhoto][album_id]"])
+	{
+		album_id.value = '0';
+	}
+	if (remove = form["data[MemberPhoto][remove]"])
+	{
+		remove.value = '';
+	}
+	if (photo_id = form["data[MemberPhoto][photo_id]"])
+	{
+		photo_id.value = '';
+	}
+}

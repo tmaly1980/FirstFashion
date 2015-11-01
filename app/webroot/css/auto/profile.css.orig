@@ -1,0 +1,155 @@
+/* Stuff for profile section */
+
+#profile_page
+{
+	position: relative;
+	padding-top: 10px;
+	padding-left: 2px;
+	width: 100%;
+}
+
+#profile_secondary
+{
+	position: relative;
+}
+
+#profile
+{
+	background: url("/images/design/profile_bg_right_repeat.gif") repeat-x #FFFFFF;
+	width: 525px;
+	/*width: 600px;*/
+	height: 420px;
+	/*margin-left: 15px;*/
+	border-bottom: solid #EEEEEE 1px;
+	position: relative;
+	float: left;
+	margin-bottom: 15px;
+}
+
+#profile_inner
+{
+	position: absolute;
+	/* XXX TODO FINE TUNING TOP BORDER AND INNER REPEAT.....
+	top: 0px;
+	left: 10px;
+	width: 580px;
+	*/
+}
+
+#profile #controls
+{
+	margin-top: 75px;
+	width: 200px;
+	background-color: #EEEEEE;
+}
+
+#profile_right_border
+{
+	position: absolute;
+	top: 10px;
+	right: 0px;
+	width: 10px;
+	height: 353px;
+	border-right: solid white 2px;
+}
+
+#profile #profile_left
+{
+	background: url("/images/design/profile_bg_left.gif") no-repeat;
+	width: 302px;
+	position: relative;
+	padding-top: 46px;
+	padding-left: 53px;
+	height: 372px;
+
+}
+
+#profile_bottom_right_corner
+{
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	width: 10px;
+	height: 10px;
+	background: url("/images/design/profile_bg_bottom_right_corner.gif") no-repeat;
+}
+
+#profile_bottom_left_corner
+{
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	width: 10px;
+	height: 10px;
+	background: url("/images/design/profile_bg_bottom_left_corner.gif") no-repeat;
+}
+
+#profile_top_right_corner
+{
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 10px;
+	height: 10px;
+	background: url("/images/design/profile_bg_top_right_corner.gif") no-repeat;
+}
+
+#member_img
+{
+	width: 198px;
+	height: 206px;
+	overflow: clip;
+}
+
+#member_gen
+{
+	padding: 0px;
+	width: 200px;
+}
+
+#member_gen h3, #member_gen h4
+{
+	margin: 0px;
+	margin-top: 3px;
+}
+
+#member_type
+{
+	position: absolute;
+	top: 280px;
+	right: 100px;
+	/*left: 145px;*/
+	text-align: right;
+}
+
+#member_type h3
+{
+	margin: 0px;
+	font-weight: bold;
+}
+
+#profile_right
+{
+	position: absolute;
+	top: 20px;
+	left: 315px;
+	border-left: solid #CCCCCC 1px;
+	padding-left: 10px;
+	height: 372px;
+	width: 190px;
+}
+
+
+#profile_right .editlink
+{
+}
+
+#profile_right .stats_item
+{
+	padding-top: 5px;
+}
+
+#profile_right .stats_item label
+{
+	display: inline;
+}

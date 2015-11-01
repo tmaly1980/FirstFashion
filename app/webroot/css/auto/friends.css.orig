@@ -1,0 +1,74 @@
+#friends
+{
+	float: right;
+	position: relative;
+	width: 150px;
+}
+
+#friends_top
+{
+	background: url("/images/design/friends_top.gif") no-repeat;
+	width: 150px;
+	height: 10px;
+
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+#friends_bottom
+{
+	background: url("/images/design/friends_bottom.gif") no-repeat;
+
+	/*
+	position: absolute;
+	bottom: 5px;
+	left: 0px;
+	*/
+
+	width: 150px;
+	height: 10px;
+
+}
+
+#friends h2
+{
+	text-align: center;
+	margin: 0px;
+	padding-top: 15px;
+	padding-bottom: 25px;
+}
+
+#friends_content
+{
+	background: url("/images/design/friends_gradient.gif") no-repeat #FFFFFF;
+	border-left: solid 1px #cccccc;
+	border-right: solid 1px #cccccc;
+	margin: 0px;
+	margin-top: 10px;
+	padding-bottom: 10px;
+}
+
+#friends_content .user
+{
+	padding-left: 10px;
+	padding-right: 2px;
+	padding-bottom: 15px;
+}
+
+.user h3
+{
+	margin: 0px;
+}
+
+.user h4
+{
+	margin: 0px;
+	margin-top: 1px;
+}
+
+.user p
+{
+	margin-top: 5px;
+	text-align: right;
+}

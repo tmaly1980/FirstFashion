@@ -1,0 +1,300 @@
+td, th
+{
+	vertical-align: top;
+	text-align: left;
+}
+
+#content {
+}
+
+p
+{
+	padding: 5px;
+}
+
+#header {
+  width: 100%;
+}
+#header {
+  /*background-color: #69c;*/
+  background: url(/images/header_repeat.png) repeat-x;
+}
+#logo {
+  vertical-align: middle;
+  border: 0;
+  width: 350px;
+}
+#logo img {
+  float: left;
+  padding: 0 1em 0 100px;
+  border: 0;
+}
+#menu {
+  /*padding: 0.5em 0.5em 0 0.5em;*/
+  /* vertical-align: middle; */
+  vertical-align: bottom;
+  padding: 0.5em 0.5em 13px 0.5em;
+  text-align: left;
+}
+
+.ad_sidebar
+{
+	width: 320px;
+	background-color: #ccc;
+}
+
+.ad_sidebar .ad
+{
+	padding: 5px 10px 5px 10px;
+}
+
+table.member_profile
+{
+	width: 100%;
+	padding: 10px;
+	background-color: #ddd;
+}
+
+table.member_profile td.leftcol
+{
+	width: 50%;
+	padding: 10px;
+}
+
+
+table.member_profile td.rightcol
+{
+	border-left: solid #222 1px;
+	padding: 10px;
+	width: 50%;
+}
+
+table.member_photo_table
+{
+	width: 100%;
+	padding: 0px 10px 0px 10px;
+}
+
+td.member_photo_container
+{
+}
+
+#usermenu
+{
+	color: #FFF;
+	text-align: right;
+	height: 40px;
+	padding: 10px 20px 5px 5px;
+}
+
+#usermenu a
+{
+	color: #FFF;
+}
+
+.member_profile .rightcol .label
+{
+	font-weight: bold;
+}
+
+.member_profile .rightcol .value
+{
+}
+
+.member_profile .rightcol div
+{
+	padding-top: 2px;
+}
+
+.block
+{
+	display: block;
+}
+
+table.edit_page tr.edit_tabs th
+{
+	white-space: nowrap;
+	width: 1%;
+}
+
+table.edit_page tr.edit_tabs th.spacer
+{
+	width: 99%;
+}
+
+.enabled
+{
+	display: block;
+}
+
+.disabled
+{
+	display: none;
+}
+
+.localnav
+{
+	display: block;
+	width: 100%;
+	height: 30px;
+	text-align: right;
+}
+
+.localnav a.localnavitem
+{
+	/*border-style: solid;
+	border-width: 1px 1px 0px 1px;
+	border-color: #CCC;
+	padding: 5px 10px 5px 10px;
+	float: right;*/
+	white-space: nowrap;
+}
+
+.clear
+{
+	clear: both;
+}
+
+div.form
+{
+	width: 100%;
+	
+}
+
+table.editform
+{
+	width: 100%;
+}
+
+input.long_text
+{
+	width: 200px;
+}
+
+.block
+{
+	display: block;
+}
+
+.full_length, .full_width
+{
+	width: 100%;
+}
+
+.member_search_results
+{
+	width: 100%;
+
+}
+
+.member_search_results .altrow
+{
+	background-color: #DEDEDE;
+}
+
+.member_search_results tr.header th
+{
+}
+
+.member_search_results tr.entry td
+{
+}
+
+.member_search_results tr.spacer td
+{
+	padding-bottom: 5px;
+}
+
+.member_searchbar
+{
+	float: right;
+	white-space: nowrap;
+}
+
+.member_searchbar label
+{
+	display: inline;
+	font-weight: bold;
+	padding: 5px;
+	font-size: 1.2em;
+}
+
+.member_album
+{
+	margin-top: 10px;
+	padding: 10px;
+	background-color: #FF3333;
+	height: 200px;
+	width: 375px;
+}
+
+#member_album
+{
+	width: 100%;
+	height: auto;
+}
+
+.member_album_editor
+{
+	width: 90%;
+	padding: 10px;
+}
+
+.member_album .member_album_photo
+{
+	float: left;
+	padding: 5px;
+}
+
+.member_album td
+{
+	padding: 5px;
+	vertical-align: bottom;
+}
+
+
+.rightalign
+{
+	text-align: right;
+}
+.editlink
+{
+	display: block;
+	text-align: right;
+}
+
+.photo_album_editor
+{
+	height: 425px;
+}
+
+.photo_album_editor .primary_image
+{
+	padding: 5px;
+	width: 250px;
+}
+
+.photo_album_editor .edit_form
+{
+	width: 500px;
+}
+
+.edit_photo_preview
+{
+	float: right;
+}
+
+.primary_photo
+{
+	border: solid black 1px;
+	background-color: green;
+}
+
+.hide
+{
+	display: none;
+}
+.show
+{
+	display: block;
+}

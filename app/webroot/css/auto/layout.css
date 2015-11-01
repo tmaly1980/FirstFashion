@@ -1,0 +1,274 @@
+/* CSS for page layout (template) */
+
+body
+{
+	margin: 0px;
+	padding: 0px;
+	/* may need something else to make sure smaller windows dont cause profile to drop down */
+}
+
+#top
+{
+	/* INCLUDES header section.... so height varies upon sub-elements... */
+	background: url("/images/design/top_bg_repeat.png") repeat-x;
+	/*width: 1000px;*/
+}
+
+#top_left
+{
+	/*position: absolute:
+	top: 0px;
+	left: 0px;
+	*/
+	/*float: left;*/
+	/*width: 350px;*/
+	height: 94px;
+	/*background: url("/images/design/top_bg_repeat.png") repeat-x;*/
+	float: left;
+	width: 350px;
+}
+
+#logo
+{
+	position: absolute;
+	left: 100px;
+	z-index: 100;
+}
+
+#top_right
+{
+	/*
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	*/
+	/*float: right;*/
+	width: 630px; /* ADJUST HERE FOR TOPMENU */
+	height: 94px;
+	margin-left: 355px;
+}
+
+
+#member_message
+{
+	padding-top: 14px;
+	padding-right: 10px;
+	text-align: right;
+	height: 31px;
+	color: #FFFFFF;
+	/* padding-top + height = 45px */
+}
+
+#member_message a
+{
+	color: #CCCCCC;
+}
+
+#topmenu
+{
+	padding-top: 14px;
+	text-align: right;
+}
+
+#topmenu a
+{
+	font-size: 14px;
+	padding-right: 20px;
+}
+
+#header_wrapper
+{
+	background: url("/images/design/splash_header_repeat.png") repeat-x;
+	height: 300px;
+	position: relative;
+}
+
+#header
+{
+	/*background: url("/images/design/splash_header.png");*/
+	background: url("/images/design/splash_header_new.png");
+	/*background-position: top right;  // So spills out left, so 'got talent' text stays where it is on resize.
+	 */
+	background-repeat: no-repeat;
+	height: 300px;
+	position: relative;
+}
+
+#header #site_functions
+{
+	position: relative;
+}
+
+#header #sign_up
+{
+	position: absolute;
+	left: 120px;
+	top: 30px;
+}
+
+#header #sign_up label
+{
+	font-size: 10px;
+}
+
+#header #site_info
+{
+	position: absolute;
+	left: 610px;
+	top: 90px;
+	width: 375px;
+	text-align: right;
+}
+
+#header #login
+{
+	position: absolute;
+	left: 120px;
+	top: 125px;
+	width: 190px;
+}
+
+#header #login #submit
+{
+	margin-bottom: 0px;
+}
+
+#header #login #forgot
+{
+	padding-left: 8px;
+}
+#header #login *
+{
+	font-size: 10px;
+	font-weight: bold;
+}
+
+#page
+{
+	background: url("/images/design/page_bg.gif") no-repeat;
+	background-position: bottom center;
+}
+
+#content_row
+{
+	background: url("/images/design/main_bg_repeat.png") repeat-x;
+	background-position: top left;
+	padding-left: 10px;
+}
+
+#content_row_inner
+{
+	width: 985px;
+}
+
+
+#content
+{
+	/* margin-right: 350px; */ /* The trick to fluid layout! w/fixed sidebar */
+	/* IE doesnt like margin-right when child is position: relative, causes it to clear from floated divs (right-col)... grr... must do fixed width instead... */
+	width: 650px;
+	padding-top: 20px;
+}
+
+.members_login_form_page #content_row_inner
+{
+	width: auto;
+}
+
+.members_login_form_page #content
+{
+	width: auto;
+	padding-top: 25px;
+}
+
+#content
+{
+
+}
+
+#footer
+{
+	background: url("/images/design/footer_repeat.png") repeat-x;
+	height: 85px;
+}
+
+#footer_left
+{
+	float: left;
+	color: #CCCCCC;
+	padding-top: 30px;
+	padding-left: 20px;
+}
+
+#footer_right
+{
+	float: right;
+}
+
+.form_sidebar_text
+{
+	float: right;
+}
+
+#right_column
+{
+	float: right;
+	margin: 5px;
+	padding-top: 15px;
+	width: 310px;
+	overflow: hidden;
+	/*border: solid black 1px;*/
+}
+
+#search
+{
+	background-color: #626262;
+	width: 295px;
+	/* TODO FIX WHY ITS NOT PADDING RIGHT!!!! */
+	padding: 10px !important;
+	position: relative;
+	text-align: right;
+}
+
+#search label
+{
+	display: block;
+	float: left;
+	color: #FFFFFF;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 0px;
+	margin: 0px;
+	width: 110px;
+}
+
+#search #criteria
+{
+	background: url("/images/design/search_bar.png") no-repeat;
+	border: 0px;
+	height: 20px;
+	padding-top: 2px;
+	/*
+	# Not sure but float right doesnt work, acts as if one universal one....
+	# perhaps its the trick in proper 'position' and it's parents' that get working relative to container...
+	*/
+	padding-left: 25px;
+	margin-left: 20px;
+	background-color: #626262;
+	width: 125px;
+	padding-right: 10px;
+	text-align: left;
+}
+
+#search #advanced_link
+{
+	display: block;
+	text-align: right;
+	color: white;
+}
+
+#sideinfo
+{
+	float: right;
+	width: 50%;
+}

@@ -1,0 +1,159 @@
+#latest_videos
+{
+	position: relative;
+	float: left;
+	width: 400px;
+	margin-left: 10px;
+	margin-right: 10px;
+
+	height: 275px;
+}
+
+#latest_videos_top_left
+{
+	background: url("/images/design/gallery_top_left.gif") no-repeat;
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+#latest_videos_top
+{
+	border-top: solid 1px #CCC;
+	background: #CC0000;
+	height: 9px;
+	overflow: hidden;
+	width: 380px;
+	margin-left: 10px;
+}
+
+#latest_videos_top_right
+{
+	background: url("/images/design/gallery_top_right.gif") no-repeat;
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+
+#latest_videos_bottom_left
+{
+	background: url("/images/design/gallery_bottom_left.gif") no-repeat;
+	margin: 0px;
+	overflow: hidden; /* so IE doesnt force height of text */
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+}
+
+#latest_videos_bottom
+{
+	border-bottom: solid 1px #CCC;
+	background: #CC0000;
+	height: 9px;
+	overflow: hidden;
+	width: 380px;
+position: absolute;
+bottom: 0px;
+left: 10px;
+margin: 0px;
+}
+
+#latest_videos_bottom_right
+{
+	/* seemsl ike there's damned margin, etc... */
+	background: url("/images/design/gallery_bottom_right.gif") no-repeat;
+	width: 10px;
+	margin: 0px;
+	height: 10px;
+	overflow: hidden; /* so IE doesnt force height of text */
+/* tho absolute positioning still relative to assumed line height....
+ * HOW can we force height to be taken ltierally, and not imply line height ? */
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+}
+
+#latest_videos_top_row
+{
+	position: relative;
+	width: 400px;
+	height: 10px;
+}
+
+#latest_videos_bottom_row
+{
+	position: relative;
+	width: 400px;
+	height: 10px;
+	overflow: hidden; /* so IE doesnt force height of text */
+}
+
+#latest_videos_content
+{
+	border-left: solid 1px #CCC;
+	border-right: solid 1px #CCC;
+	width: 388px;
+	height: 245px;
+	background-color: #CC0000; 
+	padding: 5px;
+}
+
+.member_album_viewer .editlink a
+{
+	color: white;
+}
+
+#latest_videos h2
+{
+	color: white;
+	margin: 0px;
+	padding: 0px;
+}
+
+#latest_videos .pager a
+{
+	color: white;
+}
+
+#latest_videos_item_list
+{
+	width: 100%;
+	height: 200px;
+}
+
+#latest_videos_item_list td
+{
+	padding: 5px;
+	text-align: left;
+}
+
+#latest_videos .member_video_thumb
+{
+	padding: 0px;
+	width: 100px; /* Since too big by youtube's default... */
+	/* hopefully height will autoadjust... */
+
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#latest_videos td.member_video_cell
+{
+	padding: 10px;
+	text-align: right;
+}
+
+#latest_videos a
+{
+	color: black;
+}
+
+#latest_videos .member_link
+{
+}

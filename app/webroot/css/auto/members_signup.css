@@ -1,0 +1,21 @@
+#members_signup fieldset
+{
+	width: 400px;
+}
+
+#members_signup .form_sidebar_text
+{
+	position: absolute;
+	left: 500px;
+}
+
+#model_register fieldset
+{
+	width: 400px;
+}
+
+#model_register .form_sidebar_text
+{
+	position: absolute;
+	left: 500px;
+}

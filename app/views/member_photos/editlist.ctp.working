@@ -1,0 +1,93 @@
+<?php echo $this->element("member_edit_menu"); ?>
+<div class="memberPhotos index">
+<h2><?php __('Photo Album');?></h2>
+
+'ADD' PHOTO CAPABILITY!
+<br/>
+To re-organize your photos, simply drag them to where you want them to go.<br/>
+To change your primary photo, simply drag the desired one and drop it on top the primary image area.<br/>
+<table class="photo_album_editor">
+	<tr>
+		<td class="primary_image">
+			<img src="/images/members/default/large/default.jpg">
+		</td>
+		<td class="edit_form">
+			EDIT FORM, HIDDEN UNTIL CLICKED ON IMAGE
+			AND EVEN THEN, CLEARED (form.clear ???) BEFORE...
+			<?php
+				#echo $form->create("MemberPhoto",array('type'=>'file','name'=>'photoEditForm','id'=>'photoEditForm'));
+				echo $ajax->form("updatePhoto",'post', array('model'=>'MemberPhoto','enctype'=>'multipart/form-data','name'=>'photoEditForm','id'=>'photoEditForm','loaded'=>'completePhotoEditFormAction();'));
+				#echo $form->hidden('member_id',array('value'=>$session->read("Auth.Member.member_id")));
+				# This wont work keeping member_id above, since will get reset
+				# (just have backend assume member_id!)
+				#
+				#
+				echo $form->hidden('album_id',array('value'=>0));
+
+				echo $form->hidden('photo_id'); # If absent, will add instead of modify existing.
+				echo $form->input('title');
+
+				echo $form->input('file',array('type'=>'file','label'=>'Upload/Replace File'));
+
+				echo $form->input('comment',array('rows'=>'3','cols'=>'50'));
+
+				echo $form->end("Update");
+			?>
+		</td>
+	</tr>
+	<tr>
+		<td colspan=2 class="member_album">
+		<div class="clear editlink">
+			[<a href="Javascript:void(0);" onClick="">Add Photo</a>]
+		</div>
+		<div id="member_album">
+		<?php
+$base_path = WWW_ROOT;
+$error_path = "/images/members/default/small/error.jpg";
+foreach ($memberPhotos as $entry)
+{
+	$member_photo = $entry['MemberPhoto'];
+	$thumb_path = "/images/members/$member_id/small/";
+	$large_path = "/images/members/$member_id/large/";
+
+	$photo_id = $member_photo["photo_id"];
+	$ext = $member_photo["ext"];
+	if (!$ext) { $ext = 'jpg'; }
+	$photo_path = "$photo_id.$ext";
+	$photo_title = $member_photo["title"];
+
+	$large_image = "$large_path/$photo_id.$ext";
+	$disabled = false;
+
+	if (!is_dir("$base_path/$thumb_path")) { mkdir("$base_path/$thumb_path", 0755, true); }
+
+	#echo "<a class='member_album_photo lightwindow' href='$large_image' title='$photo_title'>" .
+	echo "<a class='member_album_photo' href='Javascript:void(0);' title='$photo_title' onClick='loadPhotoEditForm(\"photo_".$member_photo["photo_id"]."\");'>" .
+		$html->image(
+			$thumb_path . # Needs to be STRING append, not comma separator!
+			$thumbnail->render($photo_path,
+				array(
+					'path'=>$large_path,
+					'cachepath'=>"$base_path/$thumb_path",
+					'errorfile'=>$error_path,
+					'width'=>85,
+					'height'=>85,
+					'quality'=>80
+				)
+			),
+			array('id'=>"photo_".$member_photo["photo_id"], 'title'=>$member_photo["title"],'comment'=>$member_photo['comment'],'photo_id'=>$member_photo["photo_id"],'album_id'=>$member_photo["album_id"])
+		)
+		. "</a>";
+}
+
+		?>
+		</div>
+
+			<br/>
+			ALBUM LOOP, FLOAT LEFT.....
+			ADD DRAGGING OPERATIONS.....
+		</td>
+	</tr>
+</table>
+
+</div>

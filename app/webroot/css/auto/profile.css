@@ -1,0 +1,141 @@
+/* Stuff for profile section */
+
+#profile_page
+{
+	position: relative;
+	padding-top: 10px;
+	padding-left: 2px;
+}
+
+#profile_secondary
+{
+	position: relative;
+}
+
+#profile
+{
+	background: url("/images/design/profile_bg_orig.gif") no-repeat;
+	background-repeat: no-repeat;
+	background-position: scroll;
+	width: 640px;
+	/*width: 600px;*/
+	height: 420px;
+	/*margin-left: 15px;*/
+	border-bottom: solid #EEEEEE 1px;
+	position: relative;
+	/*float: left;*/
+	margin-left: auto; margin-right: auto;
+	margin-bottom: 15px;
+}
+
+#profile_inner
+{
+	position: absolute;
+	/* XXX TODO FINE TUNING TOP BORDER AND INNER REPEAT.....
+	top: 0px;
+	left: 10px;
+	width: 580px;
+	*/
+}
+
+#profile #controls
+{
+	position: absolute;
+	top: 360px;
+	left: 30px;
+	width: 250px;
+}
+
+#profile_right_border
+{
+	position: absolute;
+	top: 10px;
+	right: 0px;
+	width: 10px;
+	height: 353px;
+	border-right: solid white 2px;
+}
+
+#profile #profile_left
+{
+	background: url("/images/design/profile_bg_left.gif") no-repeat;
+	width: 320px;
+	position: relative;
+	padding-top: 46px;
+	padding-left: 54px;
+	height: 372px;
+
+}
+
+#member_img
+{
+	width: 198px;
+	height: 206px;
+	overflow: hidden;
+}
+
+#member_gen
+{
+	padding: 0px;
+	width: 200px;
+}
+
+#member_gen h3, #member_gen h4
+{
+	margin: 0px;
+	margin-top: 3px;
+}
+
+#member_type
+{
+	position: absolute;
+	top: 280px;
+	right: 120px;
+	/*left: 145px;*/
+	text-align: right;
+}
+
+#member_type h3
+{
+	margin: 0px;
+	font-weight: bold;
+}
+
+#profile_right
+{
+	position: absolute;
+	top: 20px;
+	left: 320px;
+	padding-left: 10px;
+	height: 372px;
+	width: 300px;
+}
+
+
+#profile_right .editlink
+{
+	float: right;
+	margin-right: 10px;
+}
+
+#profile_right td 
+{
+	padding-top: 5px;
+}
+
+#profile_right td label
+{
+	display: inline;
+}
+
+#profile_right .about_me
+{
+	height: 80px;
+	overflow: auto;
+}
+
+#admin_moderate_nav
+{
+	text-align: right;
+	padding-bottom: 20px;
+}

@@ -1,0 +1,73 @@
+#member_album
+{
+	float: left;
+	width: 300px;
+	border: solid black 1px;
+	margin-left: 10px;
+	margin-right: 10px;
+
+	empty-cells: show;
+	border-collapse: separate;
+
+	height: 330px;
+}
+
+#member_album_top_left
+{
+	background: url("/images/design/gallery_top_left.gif") no-repeat;
+	width: 10px;
+	height: 10px;
+}
+
+#member_album_top
+{
+	border-top: solid 1px #CCC;
+	background: #CCCC00;
+	height: 10px;
+}
+
+#member_album_top_right
+{
+	background: url("/images/design/gallery_top_right.gif") no-repeat;
+	width: 10px;
+	height: 10px;
+}
+
+#member_album_bottom_left
+{
+	background: url("/images/design/gallery_bottom_left.gif") no-repeat;
+	width: 10px;
+	height: 10px;
+}
+
+#member_album_bottom
+{
+	border-bottom: solid 1px #CCC;
+	background: #CC0000;
+	height: 10px;
+}
+
+#member_album_bottom_right
+{
+	background: url("/images/design/gallery_bottom_right.gif") no-repeat;
+	width: 10px;
+	height: 10px;
+}
+
+#member_album_content
+{
+	border-left: solid 1px #CCC;
+	border-right: solid 1px #CCC;
+	height: 310px;
+	background: #CC0000;
+}
+
+#member_album .editlink a
+{
+	color: white;
+}
+
+#member_album h2
+{
+	color: white;
+}

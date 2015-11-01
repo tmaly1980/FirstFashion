@@ -1,0 +1,85 @@
+/*
+ * IDENTICAL TO FRIENDS LIST, THANKFULLY!
+ * 
+ * */
+#newest_fashions
+{
+	/* background: url("/images/design/friends_orig.gif") no-repeat; */
+	float: left;
+	position: relative;
+	width: 400px;
+	/*height: 445px;*/
+	height: 475px;
+	margin-top: 10px;
+}
+
+#newest_fashions h2
+{
+	text-align: left;
+	margin: 0px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+	border-bottom: solid #CCC 1px;
+}
+
+#newest_fashions_content
+{
+	margin: 0px;
+	margin-top: 10px;
+	padding-bottom: 10px;
+}
+
+#newest_fashions_content .user
+{
+	background-color: #EDEDED;
+	padding: 0px;
+	margin: 0px;
+	margin-bottom: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+
+	/*height: 105px;*/
+}
+
+#newest_fashions_content .user .photo img
+{
+	/*width: 85px;*/
+	max-width: 85px;
+}
+
+#newest_fashions_content .user .photo
+{
+	float: left;
+	padding-right: 5px;
+	width: 85px;
+	height: 90px;
+}
+
+#newest_fashions_content .user .member_type
+{
+	float: right;
+	margin: 0px;
+	width: 80px;
+	height: 90px;
+	padding: 0px;
+	text-align: center;
+}
+
+#newest_fashions_content .user .member_info
+{
+	padding: 5px;
+	width: 215px;
+	/*margin-left: 95px; */ /* Not needed when overflow hidden, since wont overflow below image... */
+	/*margin-right: 90px; */ /* So member_type info can work ok */
+	height: 90px;
+	overflow: hidden;
+}
+
+#newest_fashions_content .user .info .name
+{
+	padding: 0px;
+	margin: 0px;
+	margin-left: 95px;
+}
+

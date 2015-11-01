@@ -1,0 +1,106 @@
+/* Generic stuff from ugly html defaults, should have nothing specific to site here... */
+
+* { font-family: Arial, Helvetica, sans-serif; }
+
+a img { border: 0px; }
+
+a, a:visited, a:link, a:active
+{
+	text-decoration: none;
+}
+
+a:hover
+{
+	text-decoration: underline;
+}
+
+
+/* Other generalized class names */
+
+.clear
+{
+	position: relative;
+	clear: both;
+}
+
+.block, .show
+{
+	display: block;
+}
+
+.hidden, .hide
+{
+	display: none;
+}
+
+label
+{
+	display: block;
+	font-weight: bold;
+	padding-top: 10px;
+}
+
+input
+{
+}
+
+.left
+{
+	float: left;
+}
+
+.right
+{
+	float: right;
+}
+
+th, td
+{
+	vertical-align: top;
+	text-align: left;
+}
+
+.relative
+{
+	position: relative !important; /* Stop it from being taken out of exact place, in case other stuff interfering. */
+}
+
+.pager div
+{
+	display: inline;
+}
+
+.padded
+{
+	padding: 5px;
+}
+
+.ralign, .right_align
+{
+	text-align: right;
+}
+
+.lalign, .left_align
+{
+	text-align: left;
+}
+
+.calign, .center_align
+{
+	text-align: center;
+}
+
+ul
+{
+	
+}
+
+ul li
+{
+	margin-left: 20px;
+}
+
+p
+{
+	margin-top: 10px;
+}

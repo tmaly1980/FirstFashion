@@ -1,0 +1,119 @@
+/*
+ * THE GOAL IS TO HAVE A CONTAINER THAT IS TOTALLY FLUID 
+ * AS NEEDED TO SHIFT AND GROW, ETC AND STILL HAVE BORDERS/CORNERS 
+ * THAT DO NOT NEED ANY ADJUSTMENT
+ *
+ * HOWEVER THE PARENT CONTAINER NEEDS IT'S OWN WIDTH DECLARATION so the inner div's don't take up the whole screen width!
+ *
+ * EXAMPLE CONTENT:
+ *
+ *
+ */
+
+.secondary_box
+{
+}
+
+
+.secondary_box_top
+{
+	background: url("/images/design/secondary_box_top.gif") repeat-x #FFFFFF;
+	height: 10px;
+	/*
+	 * Challenge of limiting THIS items width, so not overspill over corners....
+	 *
+	 * ACTUAL ITEM MAY NEED 
+	 *
+	 * PERHAPS SOLUTION IS TO HAVE CORNERS GO INTO MARGIN AND SET MARGIN PROPERLY!
+	 *
+	 * OR 
+	 *
+	 * if we set a left col, middle col and right col, how to make sure side cols go whole height....
+	 */
+}
+
+.secondary_box_top_left
+{
+	float: left;
+	background: url("/images/design/secondary_box_top_left.gif") no-repeat;
+	height: 10px;
+}
+
+.secondary_box_top_right
+{
+	float: right;
+	background: url("/images/design/secondary_box_top_right.gif") no-repeat;
+	height: 10px;
+}
+
+.secondary_box_left
+{
+}
+
+.secondary_box_content
+{
+	padding: 5px;
+}
+
+.secondary_box_content_row
+{
+	background: url("/images/design/secondary_box_content_gradient.gif") repeat-x #FFF;
+}
+
+.secondary_box_content h2
+{
+	margin: 0px;
+	padding-top: 5px;
+}
+
+.secondary_box_content h3
+{
+	margin: 0px;
+}
+
+.secondary_box_content h4
+{
+	margin: 0px;
+}
+
+.secondary_box_content p, .secondary_box_content p h3 a
+{
+	text-align: right;
+}
+
+.secondary_box_content hr
+{
+	border: 0px;
+	border-bottom: solid 2px #AAA;
+	width: 75%;
+	text-align: center;
+}
+
+.secondary_box_right
+{
+}
+
+.secondary_box_bottom
+{
+}
+
+.secondary_box_bottom_left
+{
+}
+
+.secondary_box_bottom_right
+{
+}
+
+.pager_controls
+{
+	padding-top: 15px;
+	height: 15px;
+	width: 100%;
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+.pager_controls a 
+{
+}
